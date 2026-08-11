@@ -24,6 +24,24 @@ jobs:
       max-comments: "10"
       max-output-tokens: "8192"
       use-json-response-mode: "false"
+      review-instructions: |
+        请使用简体中文进行代码审查。
+
+        规则：
+        - 所有 PR 评论必须使用中文。
+        - 代码变量名、函数名、类名保持英文。
+        - 技术术语可以保留英文。
+        - 优先关注真实问题：
+          1. Bug
+          2. 安全漏洞
+          3. 性能问题
+          4. 数据一致性问题
+          5. 可维护性问题
+        - 不要评论纯格式问题。
+        - 每个问题包含：
+          - 问题描述
+          - 风险说明
+          - 修改建议
     secrets:
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
       LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}

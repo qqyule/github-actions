@@ -1,0 +1,30 @@
+name: Reusable Robin Review
+
+on:
+  workflow_call:
+    secrets:
+      LLM_API_KEY:
+        required: true
+      LLM_BASE_URL:
+        required: true
+      LLM_MODEL:
+        required: true
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    uses: antongulin/robin/.github/workflows/review.yml@main
+    with:
+      request-changes: false
+      max-diff-size: "25000"
+      max-comments: "10"
+      max-output-tokens: "8192"
+      use-json-response-mode: "false"
+    secrets:
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+      LLM_MODEL: ${{ secrets.LLM_MODEL }}

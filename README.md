@@ -1,6 +1,6 @@
 # Shared GitHub Actions
 
-This repository centralizes reusable GitHub Actions workflows for `qqyule` projects. It contains no model credentials.
+This repository centralizes reusable GitHub Actions workflows for `qqyule` projects. Its tracked files contain no model credentials.
 
 ## Robin review
 
@@ -29,6 +29,6 @@ jobs:
       LLM_MODEL: ${{ secrets.LLM_MODEL }}
 ```
 
-Each calling repository must define `LLM_API_KEY`, `LLM_BASE_URL`, and `LLM_MODEL` as repository secrets. This is required because the account does not have organization-level secrets and secrets are not forwarded automatically to reusable workflows.
+Each calling repository must define `LLM_API_KEY`, `LLM_BASE_URL`, and `LLM_MODEL` as repository secrets. This is required because the account does not have organization-level secrets and secrets are not forwarded automatically to reusable workflows. Do not rely on secrets configured in this shared repository: reusable workflows receive only the secrets explicitly passed by their callers.
 
 Robin configuration, prompts, model-review parameters, and review strategy are maintained in `.github/workflows/robin-review.yml`.
